@@ -15,9 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
+from . import settings
 from .views import *
+from products import views as productVies
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home_view'),
+    path('products/', productVies.ProductListView.as_view(), name='product_view'),
+    path('product/<slug:slug>/', productVies.ProductDetailView.as_view(), name='product_detail_view'),
+
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

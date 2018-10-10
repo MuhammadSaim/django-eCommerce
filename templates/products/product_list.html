@@ -1,0 +1,29 @@
+{% extends 'extends/base.html' %}
+{% block title %}Products{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img height="180" class="card-img-top" src="{{ product.image.url }}" alt="{{ product.title }}">
+                    <div class="card-body">
+                        <a href="{% url 'product_detail_view' product.slug %}">
+                            <h4>{{ product.title }}</h4>
+                        </a>
+                         <h3>
+                             ${{ product.price }}
+                         </h3>
+                        <p class="lead">
+                            {% if product.description|length > 50 %}
+                                {{ product.description|slice:"0:50" }}...
+                            {% else %}
+                                {{ product.description }}
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
