@@ -8,9 +8,26 @@
                 <div class="card">
                     <img height="180" class="card-img-top" src="{{ product.image.url }}" alt="{{ product.title }}">
                     <div class="card-body">
-                        <a href="{% url 'product_detail_view' product.slug %}">
-                            <h4>{{ product.title }}</h4>
+                        <a href="
+                            {% if product.featured %}
+                                {% url 'featured_product_detail_view' product.slug %}
+                            {% else %}
+                                {% url 'product_detail_view' product.slug %}
+                            {% endif %}
+                            ">
+                            <h5>
+                                {% if product.title|length > 20 %}
+                                    {{ product.title|slice:"0:20" }}...
+                                {% else %}
+                                    {{ product.title }}
+                                {% endif %}
+                            </h5>
                         </a>
+                        {% if product.featured == True %}
+                            <span class="badge badge-danger mb-2">
+                                Featured
+                            </span>
+                        {% endif %}
                          <h3>
                              ${{ product.price }}
                          </h3>
