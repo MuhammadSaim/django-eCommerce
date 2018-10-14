@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home_view, name='home_view'),
     path('products/', include('products.urls')),
+    path('search/', include('search.urls')),
 ]
 
 if settings.DEBUG:
