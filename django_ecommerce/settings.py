@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # our custom apps
     'products',
+    'search',
 ]
 
 MIDDLEWARE = [
