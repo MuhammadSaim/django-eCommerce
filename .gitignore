@@ -1,3 +1,8 @@
 .idea
 venv
 django_ecommerce/settings.py
+django_ecommerce/__pycache__/
+products/__pycache__/
+products/migrations/__pycache__/
+search/__pycache__/
+search/migrations/__pycache__/

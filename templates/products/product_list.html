@@ -41,6 +41,12 @@
                     </div>
                 </div>
             </div>
+            {% empty %}
+            <div class="col-md-12">
+                <div class="alert alert-danger">
+                    <strong>Ooops!</strong> No Record Found.
+                </div>
+            </div>
         {% endfor %}
     </div>
 {% endblock %}

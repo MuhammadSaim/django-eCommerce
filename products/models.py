@@ -1,5 +1,5 @@
 from django.db import models
-from .ModelManager import ProductManager
+from .ProductModelManager import ProductManager
 from .utils import upload_image_path, unique_slug_generator
 from django.db.models.signals import pre_save
 
@@ -13,6 +13,7 @@ class Product(models.Model):
     price           = models.DecimalField(decimal_places=2, max_digits=20, default=39.99)
     featured        = models.BooleanField(default=False)
     published       = models.BooleanField(default=True)
+    timestamp       = models.DateTimeField(auto_now_add=True)
 
     objects = ProductManager()
     def __str__(self):
